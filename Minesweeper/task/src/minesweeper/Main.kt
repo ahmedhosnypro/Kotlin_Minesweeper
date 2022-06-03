@@ -1,6 +1,5 @@
 package minesweeper
 
-import minesweeper.Play.play
 import java.util.*
 
 fun main() {
@@ -8,8 +7,7 @@ fun main() {
     print("How many mines do you want on the field? ")
     val mines = scanner.nextInt()
     val minesField = MinesField(mines)
-
     println()
-    println(minesField.optimizedHint)
-    play(minesField, mines)
+    println(minesField.optimizedExploredField)
+    Play.play(minesField)
 }

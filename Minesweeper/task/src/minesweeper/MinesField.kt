@@ -4,9 +4,11 @@ import java.util.*
 
 class MinesField(mines: Int) {
     private var random = Random()
-    private val minesField = Array(9) { CharArray(9) }
-    private var binaryField = Array(9) { IntArray(9) }
-    private val hiddenMinesField = Array(9) { CharArray(9) }
+    val minesField = Array(9) { CharArray(9) }
+    var binaryField = Array(9) { IntArray(9) }
+    val hiddenMinesField = Array(9) { CharArray(9) }
+    val exploredField = Array(9) { CharArray(9) }
+    val markedMines = Array(9) { CharArray(9) }
 
     init {
         for (chars in minesField) {
@@ -30,6 +32,16 @@ class MinesField(mines: Int) {
             }
         }
 
+        //playable Field
+        //marked mines
+        for (i in 0..8) {
+            for (j in 0..8) {
+                exploredField[i][j] = '.'
+                markedMines[i][j] = '.'
+            }
+        }
+
+
         //hiddenMinesField
         for (i in 0..8) {
             for (j in 0..8) {
@@ -37,34 +49,34 @@ class MinesField(mines: Int) {
                 if (binaryField[i][j] == 1) {
                     hiddenMinesField[i][j] = '.'
                 } else {
-                    x = if (i == 0 && j == 0) { //fst Corner
-                        (binaryField[i][j + 1]
+                    if (i == 0 && j == 0) { //fst Corner
+                        x = (binaryField[i][j + 1]
                                 + binaryField[i + 1][j] + binaryField[i + 1][j + 1])
                     } else if (i == 0 && j == 8) { //snd Corner
-                        binaryField[i][j - 1] +
+                        x = binaryField[i][j - 1] +
                                 binaryField[i + 1][j - 1] + binaryField[i + 1][j]
                     } else if (i == 8 && j == 0) { //3rd Corner
-                        (binaryField[i - 1][j] + binaryField[i - 1][j + 1]
+                        x = (binaryField[i - 1][j] + binaryField[i - 1][j + 1]
                                 + binaryField[i][j + 1])
                     } else if (i == 8 && j == 8) { // 4th Corner
-                        (binaryField[i - 1][j - 1] + binaryField[i - 1][j]
+                        x = (binaryField[i - 1][j - 1] + binaryField[i - 1][j]
                                 + binaryField[i][j - 1])
                     } else if (i == 0) { //fst rom
-                        (binaryField[i][j - 1] + binaryField[i][j + 1]
+                        x = (binaryField[i][j - 1] + binaryField[i][j + 1]
                                 + binaryField[i + 1][j - 1] + binaryField[i + 1][j] + binaryField[i + 1][j + 1])
-                    } else if (i == 8) { //last row
-                        (binaryField[i - 1][j - 1] + binaryField[i - 1][j] + binaryField[i - 1][j + 1]
+                    } else if (i == 8) { //last xCord
+                        x = (binaryField[i - 1][j - 1] + binaryField[i - 1][j] + binaryField[i - 1][j + 1]
                                 + binaryField[i][j - 1] + binaryField[i][j + 1])
                     } else if (j == 0) { // fst clm
-                        (binaryField[i - 1][j] + binaryField[i - 1][j + 1]
+                        x = (binaryField[i - 1][j] + binaryField[i - 1][j + 1]
                                 + binaryField[i][j + 1]
                                 + binaryField[i + 1][j] + binaryField[i + 1][j + 1])
                     } else if (j == 8) { // last clm
-                        (binaryField[i - 1][j - 1] + binaryField[i - 1][j]
+                        x = (binaryField[i - 1][j - 1] + binaryField[i - 1][j]
                                 + binaryField[i][j - 1]
                                 + binaryField[i + 1][j - 1] + binaryField[i + 1][j])
                     } else {
-                        (binaryField[i - 1][j - 1] + binaryField[i - 1][j] + binaryField[i - 1][j + 1]
+                        x = (binaryField[i - 1][j - 1] + binaryField[i - 1][j] + binaryField[i - 1][j + 1]
                                 + binaryField[i][j - 1] + binaryField[i][j + 1]
                                 + binaryField[i + 1][j - 1] + binaryField[i + 1][j] + binaryField[i + 1][j + 1])
                     }
@@ -74,24 +86,18 @@ class MinesField(mines: Int) {
         }
     }
 
-    fun getMinesField(): Array<CharArray> {
-        return minesField
-    }
-
-    fun getHiddenMinesField(): Array<CharArray> {
-        return hiddenMinesField
-    }
-
-    val optimizedHint: String
+    val optimizedExploredField: String
         get() {
             val out = StringBuilder()
-            out.append("""
+            out.append(
+                """
                  |123456789|
                 -|---------|
                 
-            """.trimIndent())
+            """.trimIndent()
+            )
             var i = 1
-            for (chars in hiddenMinesField) {
+            for (chars in exploredField) {
                 out.append(i).append('|')
                 out.append(String(chars)).append('|').append('\n')
                 i++
