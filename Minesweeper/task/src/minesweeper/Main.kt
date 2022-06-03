@@ -1,17 +1,10 @@
 package minesweeper
 
+import java.util.*
+
 fun main() {
-    println(
-        """
-        .X.......
-        .....X..X
-        ....X....
-        ......X..
-        ..X......
-        ....X....
-        ..X......
-        ..X......
-        ......X..
-    """.trimIndent()
-    )
+    val scanner = Scanner(System.`in`)
+    val mines = scanner.nextInt()
+    val minesField = MinesField(mines)
+    println(minesField.optimizedMinesField)
 }

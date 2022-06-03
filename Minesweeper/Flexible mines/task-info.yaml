@@ -94,6 +94,12 @@ files:
         }
     }
   learner_created: false
+- name: src/minesweeper/MinesField.kt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/8/stages/47/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 03 Jun 2022 19:14:42 UTC
 record: -1
