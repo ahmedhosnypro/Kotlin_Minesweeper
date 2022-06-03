@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#JAVA_INTERNAL" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Minesweeper/task" />
+            <option value="$PROJECT_DIR$/Topics/For loop and lists/For loops task" />
+            <option value="$PROJECT_DIR$/Topics/For loop and lists/Individual taxes" />
+            <option value="$PROJECT_DIR$/Topics/For loop and lists/Right Rotation" />
+            <option value="$PROJECT_DIR$/Topics/For loop and lists/Sum of numbers" />
+            <option value="$PROJECT_DIR$/Topics/For loop and lists/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Multi-dimensional list/Accordance" />
+            <option value="$PROJECT_DIR$/Topics/Multi-dimensional list/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Work with MutableLists/Empty" />
+            <option value="$PROJECT_DIR$/Topics/Work with MutableLists/Help the Lord Commander" />
+            <option value="$PROJECT_DIR$/Topics/Work with MutableLists/Playing with numbers" />
+            <option value="$PROJECT_DIR$/Topics/Work with MutableLists/Printing a list" />
+            <option value="$PROJECT_DIR$/Topics/Work with MutableLists/Theory" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

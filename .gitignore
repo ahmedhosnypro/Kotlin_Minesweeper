@@ -1,0 +1,9 @@
+# Project exclude paths
+/.gradle/
+/Minesweeper/task/build/
+/Minesweeper/task/out/
+/Minesweeper/task/out/production/classes/
+/Topics/For loop and lists/Right Rotation/out/
+/Topics/For loop and lists/Right Rotation/out/production/classes/
+/Topics/Multi-dimensional list/Accordance/out/
+/Topics/Multi-dimensional list/Accordance/out/production/classes/
