@@ -1,5 +1,6 @@
 package minesweeper
 
+import minesweeper.Play.play
 import java.util.*
 
 fun main() {
@@ -8,5 +9,7 @@ fun main() {
     val mines = scanner.nextInt()
     val minesField = MinesField(mines)
 
+    println()
     println(minesField.optimizedHint)
+    play(minesField, mines)
 }
